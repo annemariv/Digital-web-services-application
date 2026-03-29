@@ -130,3 +130,83 @@ body {
     color: #ffffff;
     text-align: center;
 }
+
+
+/* Hero section */
+main {
+    margin-top: 110px;
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--green-deep);
+}
+
+.hero-subtitle {
+    color: var(--gray-mid);
+    font-size: 1rem;
+}
+
+.hero-btn {
+    background: linear-gradient(135deg, var(--green-accent), #c6f08a);
+    border: none;
+    border-radius: var(--radius-pill);
+    padding: 10px 24px;
+    color: #2f3e2f;
+    font-weight: 500;
+    transition: all var(--dur) var(--ease);
+}
+
+.hero-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(74,138,16,0.15);
+}
+
+
+/* Cards */
+.service-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    transition: transform var(--dur), box-shadow var(--dur);
+}
+
+.service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.service-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+
+/* Form */
+.contact-card {
+    max-width: 500px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+.form-control,
+.form-select {
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 10px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--green-accent);
+    box-shadow: 0 0 0 0.2rem rgba(229,255,199,0.4);
+}

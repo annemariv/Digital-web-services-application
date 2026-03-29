@@ -3,5 +3,77 @@
 }
 
 <div class="text-center">
-    
+    <section class="text-center py-5">
+        <div class="container">
+            <h1 class="hero-title mb-3">Teenused</h1>
+            <p class="hero-subtitle mb-4">Pakume kaasaegseid ja usaldusväärseid lahendusi sinu ettevõttele</p>
+            <a href="#contact" class="btn hero-btn">Küsi hinnapakkumist</a>
+        </div>
+    </section>
+
+    <section class="services-section py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+
+                    <!-- WebDevelopment -->
+                    <div class="service-card text-center">
+                        <div class="service-icon">&#128187;</div>
+                        <h5>Veebiarendus</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+
+                <!-- WebDesign -->
+                <div class="col-md-4">
+                    <div class="service-card text-center">
+                        <div class="service-icon">&#127912;</div>
+                        <h5>Disain</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+
+                <!-- Accounting -->
+                <div class="col-md-4">
+                    <div class="service-card text-center">
+                        <div class="service-icon">&#128200;</div>
+                        <h5>Raamatupidamine</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section py-5">
+        <div class="container">
+            <div class="contact-card mx-auto">
+                <h4 class="mb-3 text-center">Küsi hinnapakkumist</h4>
+
+                <form>
+                    <div class="mb-3">
+                        <select class="form-control" required>
+                            <option value="" disabled selected>Vali teenus</option>
+                            <option value="web">Veebiarendus</option>
+                            <option value="design">Disain</option>
+                            <option value="accounting">Raamatupidamine</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Nimi" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="email" class="form-control" placeholder="E-post" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <textarea class="form-control" rows="4" placeholder="Kirjeldus"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn hero-btn w-100">Saada päring</button>
+                </form>
+            </div>
+        </div>
+    </section>
 </div>

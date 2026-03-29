@@ -2,6 +2,8 @@
     ViewData["Title"] = "Home Page";
 }
 
+@model ClientsideWebApp.Models.ContactModel
+
 <div class="text-center">
     <section class="text-center py-5">
         <div class="container">
@@ -50,25 +52,34 @@
             <div class="contact-card mx-auto">
                 <h4 class="mb-3 text-center">Küsi hinnapakkumist</h4>
 
-                <form>
+                @if (TempData["Success"] != null)
+                {
+                    <div class="alert alert-success">@TempData["Success"]</div>
+                }
+
+                <form asp-action="Index" method="post">
                     <div class="mb-3">
-                        <select class="form-control" required>
+                        <select asp-for="Service" class="form-control" required>
                             <option value="" disabled selected>Vali teenus</option>
                             <option value="web">Veebiarendus</option>
                             <option value="design">Disain</option>
                             <option value="accounting">Raamatupidamine</option>
                         </select>
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Nimi" required />
+                        <span asp-validation-for="Service" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
-                        <input type="email" class="form-control" placeholder="E-post" required />
+                        <input asp-for="Name" class="form-control" placeholder="Nimi" required />
+                        <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
-                        <textarea class="form-control" rows="4" placeholder="Kirjeldus"></textarea>
+                        <input asp-for="Email" class="form-control" placeholder="E-post" required />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <textarea asp-for="Description" class="form-control" rows="4" placeholder="Kirjeldus" autocomplete="off"></textarea>
                     </div>
 
                     <button type="submit" class="btn hero-btn w-100">Saada päring</button>
@@ -76,4 +87,8 @@
             </div>
         </div>
     </section>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
 </div>

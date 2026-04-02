@@ -210,3 +210,55 @@ main {
     border-color: var(--green-accent);
     box-shadow: 0 0 0 0.2rem rgba(229,255,199,0.4);
 }
+
+/* Contact page */
+.contact-item {
+    background: rgba(255,255,255,0.35);
+    border-radius: 14px;
+    padding: 12px 16px;
+    transition: all 0.2s ease;
+}
+
+.contact-item:hover {
+    background: rgba(229,255,199,0.3);
+}
+
+.contact-label {
+    font-size: 0.8rem;
+    color: var(--gray-mid);
+}
+
+.contact-link {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--green-deep);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.contact-link:hover {
+    text-decoration: underline;
+    color: #2f3e2f;
+}
+
+
+/* Placeholder image */
+.team-placeholder-modern {
+    background: linear-gradient(135deg, #f1f1f1, #eaeaea);
+    border-radius: 20px;
+    border: 1px dashed #ccc;
+    min-height: 280px;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.team-placeholder-modern:hover {
+    transform: scale(1.01);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+}
+
+.team-text {
+    font-size: 0.95rem;
+    color: #777;
+}

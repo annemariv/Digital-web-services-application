@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Contact";
+}
+
+<div>
+    <section class="py-4">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h1 class="hero-title mb-3">Võta meiega ühendust</h1>
+
+                <a asp-controller="Home"
+                   asp-action="Index"
+                   asp-fragment="contact"
+                   class="btn hero-btn px-4">
+                    Küsi hinnapakkumist
+                </a>
+            </div>
+
+            <div class="row g-4 align-items-stretch">
+                <div class="col-lg-5">
+                    <div class="contact-card h-100 d-flex flex-column justify-content-center">
+
+                        <h5 class="mb-4 text-center">Kontakt</h5>
+                        <!-- email -->
+                        <div class="contact-item mb-3">
+                            <div class="contact-label">E-post</div>
+                            <a href="mailto:email@email.com" class="contact-link">
+                                email@email.com
+                            </a>
+                        </div>
+
+                        <!-- phone nr -->
+                        <div class="contact-item">
+                            <div class="contact-label">Telefon</div>
+                            <a href="tel:+37200000000" class="contact-link">
+                                +372 0000 0000
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ToDo: add photo -->
+                <div class="col-lg-7">
+                    <div class="team-placeholder-modern h-100 d-flex align-items-center justify-content-center">
+                        <div class="text-center">
+                            <span class="team-text">siia pilt</span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>

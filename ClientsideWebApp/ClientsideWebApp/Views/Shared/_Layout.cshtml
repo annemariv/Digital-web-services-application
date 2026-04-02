@@ -19,9 +19,15 @@
                     </button>
                     <div class="collapse navbar-collapse text-center" id="navbarContent">
                         <ul class="navbar-nav mx-auto">
-                            <li class="nav-item"><a class="site-link nav-link active" href="#">Avaleht</a></li>
-                            <li class="nav-item"><a class="site-link nav-link" href="#">Teenused</a></li>
-                            <li class="nav-item"><a class="site-link nav-link" href="#">Kontakt</a></li>
+                            <li class="nav-item">
+                                <a class="site-link nav-link active" asp-controller="Home" asp-action="Index">Avaleht</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="site-link nav-link" asp-controller="Home" asp-fragment="services" asp-action="Index">Teenused</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="site-link nav-link" asp-controller="Home" asp-action="Contact">Kontakt</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

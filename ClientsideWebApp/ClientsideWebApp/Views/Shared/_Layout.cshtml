@@ -38,17 +38,18 @@
             @RenderBody()
         </main>
 
-        <footer class="glass-footer py-4">
-            <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
-                <div class="footer-copy">
-                    &copy; @DateTime.Now.Year [Ettevõtte nimi]
+        <footer class="glass-footer py-5">
+            <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+
+                <div class="footer-copy text-center text-md-start">
+                    &copy; @DateTime.Now.Year Ettevõte
                 </div>
-                <div class="footer-links mb-3 mb-md-0">
-                    <a href="#" class="footer-link">Meist</a>
-                    <span class="mx-2">•</span>
-                    <a href="#" class="footer-link">Privaatsus</a>
+
+                <div class="footer-links d-flex gap-3">
+                    <a asp-controller="Home" asp-action="Privacy" class="footer-link">Privaatsus</a>
+                    <a asp-controller="Home" asp-action="Contact" class="footer-link">Kontakt</a>
                 </div>
-                
+
             </div>
         </footer>
     </div>

@@ -5,11 +5,11 @@ using System.Net.Mail;
 
 namespace ClientsideWebApp.Controllers
 {
-    public class ContactController : Controller
+    public class QuoteController : Controller
     {
         private readonly IConfiguration _config;
 
-        public ContactController(IConfiguration config)
+        public QuoteController(IConfiguration config)
         {
             _config = config;
         }
@@ -19,7 +19,7 @@ namespace ClientsideWebApp.Controllers
 
         //ToDo: AWS secret manager
         [HttpPost]
-        public IActionResult Index(ContactModel model)
+        public IActionResult Index(QuoteModel model)
         {
             if (!ModelState.IsValid)
                 return View(model);

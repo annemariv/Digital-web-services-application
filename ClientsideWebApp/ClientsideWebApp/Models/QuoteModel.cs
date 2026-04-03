@@ -2,7 +2,7 @@
 
 namespace ClientsideWebApp.Models
 {
-    public class ContactModel
+    public class QuoteModel
     {
         [Required(ErrorMessage = "Palun vali soovitud teenus")]
         public string Service { get; set; }
@@ -14,6 +14,7 @@ namespace ClientsideWebApp.Models
         [EmailAddress(ErrorMessage = "Palun sisesta korrektne e-post")]
         public string Email { get; set; }
 
+        [MaxLength(1000, ErrorMessage = "Kirjeldus ei tohi olla üle 1000 tähemärgi")]
         public string Description { get; set; }
     }
 }

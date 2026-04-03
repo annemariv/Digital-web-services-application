@@ -96,6 +96,45 @@ body {
     background: var(--green-accent);
 }
 
+.navbar .hero-btn {
+    padding: 6px 16px;
+    font-size: 0.875rem;
+}
+
+.hero-btn {
+    background: linear-gradient(135deg, var(--green-accent), #c6f08a);
+    border: none;
+    border-radius: var(--radius-pill);
+    color: #2f3e2f !important;
+    font-weight: 500;
+    transition: all var(--dur) var(--ease);
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(74,138,16,0.15);
+    text-decoration: none;
+}
+
+.navbar .hero-btn {
+    padding: 6px 16px;
+    font-size: 0.875rem;
+}
+
+form .hero-btn,
+.modal .hero-btn {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px 24px;
+}
+
+
 /* Footer */
 .glass-footer {
     width: 100%;
@@ -154,22 +193,6 @@ main {
     font-size: 1rem;
 }
 
-.hero-btn {
-    background: linear-gradient(135deg, var(--green-accent), #c6f08a);
-    border: none;
-    border-radius: var(--radius-pill);
-    padding: 10px 24px;
-    color: #2f3e2f;
-    font-weight: 500;
-    transition: all var(--dur) var(--ease);
-}
-
-.hero-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(74,138,16,0.15);
-}
-
-
 /* Cards */
 .service-card {
     background: var(--glass-bg);
@@ -194,7 +217,7 @@ main {
 
 
 /* Form */
-.contact-card {
+.quote-card {
     max-width: 500px;
     background: var(--glass-bg);
     backdrop-filter: blur(var(--glass-blur));
@@ -216,6 +239,12 @@ main {
     border-color: var(--green-accent);
     box-shadow: 0 0 0 0.2rem rgba(229,255,199,0.4);
 }
+
+textarea.form-control {
+    max-height: 400px;
+    resize: vertical;
+}
+
 
 /* Contact page */
 .contact-item {

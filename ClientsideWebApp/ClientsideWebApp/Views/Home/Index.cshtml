@@ -2,54 +2,64 @@
     ViewData["Title"] = "Home Page";
 }
 
-@model ClientsideWebApp.Models.ContactModel
+@model HomeViewModel
 
 <div class="text-center">
     <section class="text-center py-5">
         <div class="container">
             <h1 class="hero-title mb-3">Teenused</h1>
             <p class="hero-subtitle mb-4">Pakume kaasaegseid ja usaldusväärseid lahendusi sinu ettevõttele</p>
-            <a href="#contact" class="btn hero-btn">Küsi hinnapakkumist</a>
         </div>
     </section>
 
     <section id="services" class="services-section py-5">
         <div class="container">
             <div class="row g-4">
-                <div class="col-md-4">
+                @foreach (var service in Model.Services)
+                {
+                    <div class="col-md-4">
+                        <div class="service-card text-center"
+                             data-bs-toggle="modal"
+                             data-bs-target="#modal-@service.Id">
 
-                    <!-- WebDevelopment -->
-                    <div class="service-card text-center">
-                        <div class="service-icon">&#128187;</div>
-                        <h5>Veebiarendus</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <div class="service-icon">@Html.Raw(service.Icon)</div>
+                            <h5>@service.Title</h5>
+                            <p>@service.ShortDescription</p>
+                        </div>
                     </div>
-                </div>
 
-                <!-- WebDesign -->
-                <div class="col-md-4">
-                    <div class="service-card text-center">
-                        <div class="service-icon">&#127912;</div>
-                        <h5>Disain</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
+                    <!-- modal -->
+                    <div class="modal fade" id="modal-@service.Id" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
 
-                <!-- Accounting -->
-                <div class="col-md-4">
-                    <div class="service-card text-center">
-                        <div class="service-icon">&#128200;</div>
-                        <h5>Raamatupidamine</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <div class="modal-header">
+                                    <h5 class="modal-title">@service.Title</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <p>@service.FullDescription</p>
+
+                                    <a href="#quote"
+                                       class="btn hero-btn select-service-btn mt-3"
+                                       data-service="@service.Id"
+                                       data-bs-dismiss="modal">
+                                        Küsi hinnapakkumist sellele teenusele
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
-                </div>
+                }
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact-section py-5">
+    <section id="quote" class="quote-section py-5">
         <div class="container">
-            <div class="contact-card mx-auto">
+            <div class="quote-card mx-auto">
                 <h4 class="mb-3 text-center">Küsi hinnapakkumist</h4>
 
                 @if (TempData["Success"] != null)
@@ -59,27 +69,32 @@
 
                 <form asp-action="Index" method="post">
                     <div class="mb-3">
-                        <select asp-for="Service" class="form-control" required>
+                        <select asp-for="Quote.Service" class="form-control" required>
                             <option value="" disabled selected>Vali teenus</option>
                             <option value="web">Veebiarendus</option>
                             <option value="design">Disain</option>
                             <option value="accounting">Raamatupidamine</option>
                         </select>
-                        <span asp-validation-for="Service" class="text-danger"></span>
+                        <span asp-validation-for="Quote.Service" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
-                        <input asp-for="Name" class="form-control" placeholder="Nimi" required />
-                        <span asp-validation-for="Name" class="text-danger"></span>
+                        <input asp-for="Quote.Name" class="form-control" placeholder="Nimi" required />
+                        <span asp-validation-for="Quote.Name" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
-                        <input asp-for="Email" class="form-control" placeholder="E-post" required />
-                        <span asp-validation-for="Email" class="text-danger"></span>
+                        <input asp-for="Quote.Email" class="form-control" placeholder="E-post" required />
+                        <span asp-validation-for="Quote.Email" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
-                        <textarea asp-for="Description" class="form-control" rows="4" placeholder="Kirjeldus" autocomplete="off"></textarea>
+                        <textarea asp-for="Quote.Description"
+                        class="form-control"
+                        rows="4"
+                        maxlength="1000"
+                        placeholder="Kirjeldus"
+                        autocomplete="off"></textarea>
                     </div>
 
                     <button type="submit" class="btn hero-btn w-100">Saada päring</button>

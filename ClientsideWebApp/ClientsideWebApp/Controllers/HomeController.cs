@@ -14,13 +14,18 @@ namespace ClientsideWebApp.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string service)
         {
             var model = new HomeViewModel
             {
                 Quote = new QuoteModel(),
                 Services = ServiceDataModel.GetAll()
             };
+
+            if (!string.IsNullOrEmpty(service))
+            {
+                model.Quote.Service = service;
+            }
 
             return View(model);
         }

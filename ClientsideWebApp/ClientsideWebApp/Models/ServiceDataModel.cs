@@ -63,14 +63,14 @@ namespace ClientsideWebApp.Models
                 new DigitalServiceModel
                 {
                     Id = "5",
-                    Title = "Haldus",
-                    Slug = "haldus",
-                    ShortDescription = "Hooldus ja tugi sinu veebile",
+                    Title = "Konsultatsioon",
+                    Slug = "konsultatsioon",
+                    ShortDescription = "Selgus, suund ja konkreetsed järgmised sammud sinu veebis või äris",
                     Bullets = new List<string>
                     {
-                        "Veebilehe uuendused ja varukoopiad",
-                        "Turvalisuse jälgimine",
-                        "Kasutajatugi ja probleemide lahendamine"
+                        "Analüüs sinu olemasolevast veebist või ideest",
+                        "Selge tegevusplaan ja soovitused",
+                        "Abi õigete tehniliste ja disainiotsuste tegemisel"
                     }
                 }
             };

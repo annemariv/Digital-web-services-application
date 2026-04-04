@@ -1,32 +1,48 @@
 ﻿@model string
-@RenderSection("ServiceIntro", required: false)
 
-<section class="service-navbar py-4">
+<!-- services -->
+<section class="services-nav-section py-5">
+
+    <div class="container text-center mb-4">
+        <h2 class="services-title">Teenused</h2>
+        <p class="services-subtitle">
+            Vali teenus ja vaata täpsemalt, kuidas saame aidata.
+        </p>
+    </div>
+
     <div class="container d-flex justify-content-center">
         <div class="nav-tabs-container">
             <a href="/teenused/kodulehe-loomine"
-               class="nav-tab @(Model == "webpage" ? "active" : "")">
+               class="nav-tab @(Model == "_Webpage" ? "active" : "")">
                 Kodulehe loomine
             </a>
 
             <a href="/teenused/epoe-loomine"
-               class="nav-tab @(Model == "epoe" ? "active" : "")">
+               class="nav-tab @(Model == "_Estore" ? "active" : "")">
                 E-poe loomine
             </a>
 
             <a href="/teenused/logo-disain"
-               class="nav-tab @(Model == "logo" ? "active" : "")">
+               class="nav-tab @(Model == "_Design" ? "active" : "")">
                 Logo disain
             </a>
 
             <a href="/teenused/raamatupidamine"
-               class="nav-tab @(Model == "accounting" ? "active" : "")">
+               class="nav-tab @(Model == "_Accounting" ? "active" : "")">
                 Raamatupidamine
+            </a>
+
+            <a href="/teenused/konsultatsioon"
+               class="nav-tab @(Model == "_Consultation" ? "active" : "")">
+                Konsultatsioon
             </a>
         </div>
     </div>
+
 </section>
 
+
+<!-- detail -->
 <section class="service-detail py-5">
     <div class="container">
         <div class="row align-items-stretch g-5">
@@ -44,5 +60,27 @@
             </div>
 
         </div>
+    </div>
+</section>
+
+<!-- back to quote section -->
+<section class="service-cta-section py-5">
+    <div class="container text-center">
+
+        <h2 class="cta-title">Valmis järgmiseks sammuks?</h2>
+
+        <p class="cta-subtitle">
+            Küsi hinnapakkumist ja leiame sinu ettevõttele sobiva lahenduse.
+        </p>
+
+        @{
+            var serviceMap = ViewData["Service"] as string;
+        }
+
+        <a href="@(serviceMap != null ? $"/?service={serviceMap}#quote" : "/#quote")"
+           class="btn hero-btn mt-3">
+            Võte meiega ühendust
+        </a>
+
     </div>
 </section>

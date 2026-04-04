@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Avaleht";
 }
 
 @model HomeViewModel
@@ -14,42 +14,26 @@
 
     <section id="services" class="services-section py-5">
         <div class="container">
-            <div class="row g-4">
+          
+
+            <div class="row g-4 justify-content-center">
                 @foreach (var service in Model.Services)
                 {
-                    <div class="col-md-4">
-                        <div class="service-card text-center"
-                             data-bs-toggle="modal"
-                             data-bs-target="#modal-@service.Id">
+                    <div class="col-md-4 d-flex">
+                        <div class="service-card flex-fill text-start">
+                            <h5 class="service-title mb-2">@service.Title</h5>
+                            <p class="service-shortdesc mb-3">@service.ShortDescription</p>
 
-                            <div class="service-icon">@Html.Raw(service.Icon)</div>
-                            <h5>@service.Title</h5>
-                            <p>@service.ShortDescription</p>
-                        </div>
-                    </div>
+                            <ul class="service-bullets mb-4">
+                                @foreach (var bullet in service.Bullets)
+                                {
+                                    <li>@bullet</li>
+                                }
+                            </ul>
 
-                    <!-- modal -->
-                    <div class="modal fade" id="modal-@service.Id" tabindex="-1">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-
-                                <div class="modal-header">
-                                    <h5 class="modal-title">@service.Title</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                </div>
-
-                                <div class="modal-body">
-                                    <p>@service.FullDescription</p>
-
-                                    <a href="#quote"
-                                       class="btn hero-btn select-service-btn mt-3"
-                                       data-service="@service.Id"
-                                       data-bs-dismiss="modal">
-                                        Küsi hinnapakkumist sellele teenusele
-                                    </a>
-                                </div>
-
-                            </div>
+                            <a href="/teenused/@service.Slug" class="service-readmore">
+                                Loe lähemalt →
+                            </a>
                         </div>
                     </div>
                 }

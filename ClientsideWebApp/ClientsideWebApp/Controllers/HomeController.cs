@@ -8,14 +8,10 @@ namespace ClientsideWebApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly List<DigitalServiceModel> _services;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "data", "services.json");
-            var json = System.IO.File.ReadAllText(filePath);
-            _services = JsonSerializer.Deserialize<List<DigitalServiceModel>>(json)!;
         }
 
         public IActionResult Index()
@@ -23,7 +19,7 @@ namespace ClientsideWebApp.Controllers
             var model = new HomeViewModel
             {
                 Quote = new QuoteModel(),
-                Services = _services
+                Services = ServiceDataModel.GetAll()
             };
 
             return View(model);

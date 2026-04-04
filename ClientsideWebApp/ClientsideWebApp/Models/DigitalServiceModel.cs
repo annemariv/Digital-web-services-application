@@ -4,8 +4,8 @@
     {
         public string Id { get; set; }
         public string Title { get; set; }
-        public string Icon { get; set; }
+        public string Slug { get; set; }
         public string ShortDescription { get; set; }
-        public string FullDescription { get; set; }
+        public List<string> Bullets { get; set; }
     }
 }

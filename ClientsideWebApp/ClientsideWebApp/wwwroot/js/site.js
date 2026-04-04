@@ -16,12 +16,7 @@
                 quoteSection.scrollIntoView({ behavior: 'smooth' });
             }
 
-            //close modal
-            var modalEl = this.closest('.modal');
-            if (modalEl) {
-                var modal = bootstrap.Modal.getInstance(modalEl);
-                if (modal) modal.hide();
-            }
+          
         });
     });
 });

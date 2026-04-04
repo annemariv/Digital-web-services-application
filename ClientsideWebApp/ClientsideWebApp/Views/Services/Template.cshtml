@@ -1,0 +1,48 @@
+﻿@model string
+@RenderSection("ServiceIntro", required: false)
+
+<section class="service-navbar py-4">
+    <div class="container d-flex justify-content-center">
+        <div class="nav-tabs-container">
+            <a href="/teenused/kodulehe-loomine"
+               class="nav-tab @(Model == "webpage" ? "active" : "")">
+                Kodulehe loomine
+            </a>
+
+            <a href="/teenused/epoe-loomine"
+               class="nav-tab @(Model == "epoe" ? "active" : "")">
+                E-poe loomine
+            </a>
+
+            <a href="/teenused/logo-disain"
+               class="nav-tab @(Model == "logo" ? "active" : "")">
+                Logo disain
+            </a>
+
+            <a href="/teenused/raamatupidamine"
+               class="nav-tab @(Model == "accounting" ? "active" : "")">
+                Raamatupidamine
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="service-detail py-5">
+    <div class="container">
+        <div class="row align-items-stretch g-5">
+
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <div class="service-image w-100">
+                    <img src="~/images/@ViewData["ImageFile"]" alt="@Model" class="img-fluid rounded shadow-sm">
+                </div>
+            </div>
+
+            <div class="col-md-6 d-flex align-items-stretch">
+                <div class="service-text-content p-4 w-100 d-flex flex-column justify-content-center">
+                    @await Html.PartialAsync($"~/Views/Services/{Model}.cshtml")
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,20 +1,27 @@
-﻿<form method="post">
-    @Html.AntiForgeryToken()
+﻿<div class="login-container">
 
-    <input type="hidden" name="returnUrl" value="@Context.Request.Query["ReturnUrl"]" />
+    <form method="post" class="login-card">
+        @Html.AntiForgeryToken()
 
-    <div class="form-group">
-        <input name="username" class="form-control" placeholder="Kasutajanimi" />
-    </div>
+        <input type="hidden" name="returnUrl" value="@Context.Request.Query["ReturnUrl"]" />
 
-    <div class="form-group">
-        <input name="password" type="password" class="form-control" placeholder="Parool" />
-    </div>
+        <h2 class="login-title">Logi sisse</h2>
 
-    <button type="submit" class="btn-primary">Logi sisse</button>
+        <div class="form-group">
+            <input name="username" class="form-control" placeholder="Kasutajanimi" />
+        </div>
 
-    @if (ViewBag.Error != null)
-    {
-        <p class="text-danger">@ViewBag.Error</p>
-    }
-</form>
+        <div class="form-group">
+            <input name="password" type="password" class="form-control" placeholder="Parool" />
+        </div>
+
+        <button type="submit" class="btn-primary login-btn">
+            Logi sisse
+        </button>
+
+        @if (ViewBag.Error != null)
+        {
+            <p class="text-danger">@ViewBag.Error</p>
+        }
+    </form>
+</div>

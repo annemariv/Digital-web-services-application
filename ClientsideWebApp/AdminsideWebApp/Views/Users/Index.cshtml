@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model List<(IdentityUser User, IList<string> Roles)>
+
+<div class="admin-container">
+
+    <div class="admin-header">
+        <h1 class="admin-title">Kasutajad</h1>
+        <p class="admin-subtitle">Halda kasutajaid</p>
+    </div>
+
+    <div class="admin-card">
+
+        <div class="table-header">
+            <a asp-action="Create" class="btn-primary">+ Lisa töötaja</a>
+        </div>
+
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Kasutajanimi</th>
+                    <th>Roll</th>
+                    <th class="text-center">Tegevused</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.User.UserName</td>
+
+                        <td>
+                            @string.Join(", ", item.Roles)
+                        </td>
+
+                        <td class="text-center">
+                            @if (item.User.UserName != User.Identity.Name)
+                            {
+                                <form asp-action="Delete" method="post" class="inline-form">
+                                    @Html.AntiForgeryToken()
+
+                                    <input type="hidden" name="id" value="@item.User.Id" />
+
+                                    <button type="submit" class="icon-btn delete" title="Kustuta">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            }
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

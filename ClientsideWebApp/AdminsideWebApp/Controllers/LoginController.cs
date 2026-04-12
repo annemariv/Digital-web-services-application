@@ -19,8 +19,14 @@ namespace AdminsideWebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index(string username, string password, string? returnUrl)
+        public async Task<IActionResult> Index(string username, string password, string returnUrl)
         {
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            {
+                ViewBag.Error = "Palun sisesta kasutajanimi ja parool";
+                return View();
+            }
+
             var result = await _signInManager.PasswordSignInAsync(
                 username,
                 password,

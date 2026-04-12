@@ -32,30 +32,25 @@
                 <a class="site-brand" asp-controller="Projects" asp-action="Index">
                     <img src="~/images/V_ logo.png" alt="Logo">
                 </a>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="site-link" asp-controller="Projects" asp-action="Index">
-                            Projektid
-                        </a>
-                    </li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <ul class="navbar-nav">
 
-                    <li class="nav-item">
-                        <a class="site-link" asp-controller="Projects" asp-action="Create">
-                            + Lisa projekt
-                        </a>
-                    </li>
-
-                    @if (User.IsInRole("Admin"))
-                    {
                         <li class="nav-item">
-                            <a asp-controller="Users" asp-action="Create" class="site-link">
-                                Lisa töötaja
+                            <a class="site-link" asp-controller="Projects" asp-action="Index">
+                                Projektid
                             </a>
                         </li>
-                    }
 
-                    @if (User.Identity.IsAuthenticated)
-                    {
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a asp-controller="Users" asp-action="Index" class="site-link">
+                                    Kasutajad
+                                </a>
+                            </li>
+                        }
+
                         <li class="nav-item">
                             <form asp-controller="Login" asp-action="Logout" method="post" class="logout-form">
                                 @Html.AntiForgeryToken()
@@ -65,8 +60,9 @@
                                 </button>
                             </form>
                         </li>
-                    }
-                </ul>
+
+                    </ul>
+                }
             </div>
         </nav>
     </header>

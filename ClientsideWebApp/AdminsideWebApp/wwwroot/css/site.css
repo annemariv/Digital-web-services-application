@@ -210,14 +210,25 @@ textarea.form-control {
     background: rgba(198,240,138,0.15);
 }
 
-.text-right {
-    text-align: right;
+.text-center {
+    text-align: center;
+}
+
+.admin-table td.text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.inline-form {
+    display: inline-flex;
+    align-items: center;
 }
 
 .table-header {
-    margin: 20px 0 25px 0;
+    margin-bottom: 25px;
 }
-
 
 /*statuses*/
 .status-badge {
@@ -260,7 +271,6 @@ textarea.form-control {
     background: rgba(198,240,138,0.25);
     color: #476B3D;
     font-size: 0.95rem;
-    margin-left: 8px;
     text-decoration: none;
     transition: all 0.25s ease;
 }
@@ -288,6 +298,20 @@ textarea.form-control {
 
 .icon-btn.delete:hover {
     background: rgba(255, 120, 120, 0.3);
+}
+
+button.icon-btn {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+
+button.icon-btn:focus,
+button.icon-btn:focus-visible {
+    outline: none;
+    box-shadow: none;
 }
 
 
@@ -430,6 +454,47 @@ textarea.form-control {
 .toast-message.error {
     background: rgba(255,120,120,0.95);
     color: #fff;
+}
+
+
+/*login*/
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 440px;
+
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(12px);
+    padding: 40px 35px;
+    border-radius: 24px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.login-title {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.6rem;
+}
+
+.login-card .form-control {
+    padding: 12px 14px;
+    border-radius: 14px;
+    font-size: 0.95rem;
+}
+
+.login-btn {
+    margin-top: 10px;
+    width: 100%;
+    padding: 12px;
 }
 
 

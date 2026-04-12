@@ -53,6 +53,19 @@
                             </a>
                         </li>
                     }
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <form asp-controller="Login" asp-action="Logout" method="post" class="logout-form">
+                                @Html.AntiForgeryToken()
+
+                                <button type="submit" class="site-link logout-btn">
+                                    <i class="bi bi-box-arrow-right"></i> Logi välja
+                                </button>
+                            </form>
+                        </li>
+                    }
                 </ul>
             </div>
         </nav>

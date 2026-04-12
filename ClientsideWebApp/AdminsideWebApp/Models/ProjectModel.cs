@@ -16,6 +16,14 @@ namespace AdminsideWebApp.Models
         //By default status draft
         [Required]
         public string Status { get; set; } = "Draft";
+        public string StatusDisplay => (Status ?? "").ToLower() switch
+        {
+            "draft" => "Mustand",
+            "active" => "Aktiivne",
+            "done" => "Tehtud",
+            "inactive" => "Mitteaktiivne",
+            _ => Status ?? ""
+        };
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 

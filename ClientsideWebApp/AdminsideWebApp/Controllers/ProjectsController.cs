@@ -1,6 +1,7 @@
 ﻿using AdminsideWebApp.Data;
 using AdminsideWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdminsideWebApp.Controllers
@@ -23,9 +24,23 @@ namespace AdminsideWebApp.Controllers
             return View(projects);
         }
 
+
+        //Statuses helper method
+        private void LoadStatuses()
+        {
+            ViewBag.Statuses = new List<SelectListItem>
+            {
+                new SelectListItem { Value = "Draft", Text = "Mustand" },
+                new SelectListItem { Value = "Active", Text = "Aktiivne" },
+                new SelectListItem { Value = "Inactive", Text = "Mitteaktiivne" },
+                new SelectListItem { Value = "Done", Text = "Tehtud" }
+            };
+        }
+
         //Create
         public IActionResult Create()
         {
+            LoadStatuses();
             return View();
         }
 
@@ -34,7 +49,10 @@ namespace AdminsideWebApp.Controllers
         public async Task<IActionResult> Create(ProjectModel project)
         {
             if (!ModelState.IsValid)
+            {
+                LoadStatuses();
                 return View(project);
+            }
 
             project.CreatedAt = DateTime.UtcNow;
 
@@ -72,5 +90,36 @@ namespace AdminsideWebApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
+        //Edit
+        public async Task<IActionResult> Edit(int id)
+        {
+            var project = await _context.Projects.FindAsync(id);
+
+            if (project == null)
+                return NotFound();
+
+            LoadStatuses();
+            return View(project);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, ProjectModel project)
+        {
+            if (id != project.Id)
+                return NotFound();
+
+            if (!ModelState.IsValid)
+            {
+                LoadStatuses();
+                return View(project);
+            }
+
+            _context.Update(project);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

@@ -1,11 +1,13 @@
 ﻿using AdminsideWebApp.Data;
 using AdminsideWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdminsideWebApp.Controllers
 {
+    [Authorize]
     public class ProjectsController : Controller
     {
         private readonly AppDbContext _context;
@@ -64,7 +66,8 @@ namespace AdminsideWebApp.Controllers
 
 
         //Delete
-        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        [HttpGet]        
         public async Task<IActionResult> Delete(int id)
         {
             var project = await _context.Projects.FindAsync(id);

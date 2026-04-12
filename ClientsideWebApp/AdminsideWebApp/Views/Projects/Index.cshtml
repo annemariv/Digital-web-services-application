@@ -9,7 +9,7 @@
 
     <div class="admin-card">
 
-        <div style="margin-bottom:15px;">
+        <div class="table-header">
             <a asp-action="Create" class="btn-primary">+ Lisa projekt</a>
         </div>
 
@@ -19,7 +19,8 @@
                     <th>Pealkiri</th>
                     <th>Staatus</th>
                     <th>Loodud</th>
-                    <th style="text-align:right;">Tegevused</th>
+                    <th>Uuendatud</th>
+                    <th class="text-right">Tegevused</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,6 +36,9 @@
                         </td>
 
                         <td>@item.CreatedAt.ToShortDateString()</td>
+                        <td>
+                            @(item.UpdatedAt?.ToShortDateString() ?? "-")
+                        </td>
 
                         <td style="text-align:right;">
 

@@ -117,7 +117,25 @@ namespace AdminsideWebApp.Controllers
                 return View(project);
             }
 
-            _context.Update(project);
+            var existingProject = await _context.Projects.FindAsync(id);
+
+            if (existingProject == null)
+                return NotFound();
+
+            bool hasChanges =
+                (existingProject.Title ?? "").Trim() != (project.Title ?? "").Trim() ||
+                (existingProject.Description ?? "").Trim() != (project.Description ?? "").Trim() ||
+                (existingProject.Status ?? "").Trim() != (project.Status ?? "").Trim();
+
+            existingProject.Title = project.Title;
+            existingProject.Description = project.Description;
+            existingProject.Status = project.Status;
+
+            if (hasChanges)
+            {
+                existingProject.UpdatedAt = DateTime.UtcNow;
+            }
+
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));

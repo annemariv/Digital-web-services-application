@@ -42,13 +42,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 2rem;
 }
 
-.site-brand {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #273523;
-    text-decoration: none;
+.site-brand img {
+    height: 90px;
 }
 
 .navbar-nav {
@@ -165,6 +163,14 @@ textarea.form-control {
     font-weight: 500;
     color: #2f3e2f;
     cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(74,138,16,0.15);
+    text-decoration: none;
+    color: #2f3e2f;
 }
 
 .btn-secondary {
@@ -180,6 +186,7 @@ textarea.form-control {
     font-size: 0.85rem;
     color: #d9534f;
 }
+
 
 /*table*/
 .admin-table {
@@ -199,8 +206,16 @@ textarea.form-control {
     border-top: 1px solid rgba(0,0,0,0.05);
 }
 
-.admin-table tr:hover {
+.admin-table tbody tr:hover {
     background: rgba(198,240,138,0.15);
+}
+
+.text-right {
+    text-align: right;
+}
+
+.table-header {
+    margin: 20px 0 25px 0;
 }
 
 
@@ -288,6 +303,10 @@ textarea.form-control {
     justify-content: center;
 }
 
+/*create*/
+.form-actions.between {
+    justify-content: space-between;
+}
 
 /*delete*/
 .admin-container.center {

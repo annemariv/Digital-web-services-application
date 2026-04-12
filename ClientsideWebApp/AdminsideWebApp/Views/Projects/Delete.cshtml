@@ -1,0 +1,32 @@
+﻿@model ProjectModel
+
+<div class="admin-container center">
+
+    <div class="admin-card delete-card">
+
+        <div class="admin-header center-text">
+            <h2 class="admin-title">Kustuta projekt</h2>
+        </div>
+
+        <p class="delete-text">
+            Kustuta projekti <strong>@Model.Title</strong>
+        </p>
+
+        <form asp-action="Delete" method="post">
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-actions center">
+
+                <button type="submit" class="btn-danger-custom">
+                    Kustuta
+                </button>
+
+                <a asp-action="Index" class="btn-secondary-custom">
+                    Tühista
+                </a>
+
+            </div>
+        </form>
+    </div>
+</div>

@@ -19,6 +19,7 @@
                     <th>Pealkiri</th>
                     <th>Staatus</th>
                     <th>Loodud</th>
+                    <th style="text-align:right;">Tegevused</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,13 +27,33 @@
                 {
                     <tr>
                         <td>@item.Title</td>
-                        <td>@item.Status</td>
+
+                        <td>
+                            <span class="status-badge status-@item.Status.ToLower()">
+                                @item.Status
+                            </span>
+                        </td>
+
                         <td>@item.CreatedAt.ToShortDateString()</td>
+
+                        <td style="text-align:right;">
+
+                            <a asp-action="Details" asp-route-id="@item.Id" class="icon-btn view" title="Vaata">
+                                <i class="bi bi-eye-fill"></i>
+                            </a>
+
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="icon-btn" title="Muuda">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="icon-btn delete" title="Kustuta">
+                                <i class="bi bi-trash"></i>
+                            </a>
+
+                        </td>
                     </tr>
                 }
             </tbody>
         </table>
-
     </div>
-
 </div>

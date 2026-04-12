@@ -1,0 +1,46 @@
+﻿@model ProjectModel
+
+<div class="admin-container">
+
+    <div class="admin-header">
+        <h1 class="admin-title">Uus projekt</h1>
+        <p class="admin-subtitle">Lisa uus projekt</p>
+    </div>
+
+    <div class="admin-card">
+        <form asp-action="Create" method="post">
+
+            <div class="form-group">
+                <label asp-for="Title" class="form-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="form-label"></label>
+                <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Status" class="form-label"></label>
+                <select asp-for="Status" class="form-control">
+                    <option value="Draft">Draft</option>
+                    <option value="Active">Active</option>
+                    <option value="Completed">Completed</option>
+                </select>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; margin-top:20px;">
+                <a asp-action="Index" class="btn-secondary">Tagasi</a>
+                <button type="submit" class="btn-primary">Salvesta</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

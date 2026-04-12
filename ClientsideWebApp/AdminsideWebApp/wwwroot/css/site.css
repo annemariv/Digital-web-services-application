@@ -346,3 +346,40 @@ textarea.form-control {
     background: rgba(0,0,0,0.1);
     color: #333;
 }
+
+
+/*Details*/
+.details-card {
+    max-width: 600px;
+    width: 100%;
+}
+
+.details-content {
+    margin-top: 1.5rem;
+}
+
+.details-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.details-row.column {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.details-label {
+    font-size: 0.85rem;
+    color: #888;
+    font-weight: 500;
+}
+
+.details-description {
+    margin: 0;
+    color: #444;
+    line-height: 1.6;
+}

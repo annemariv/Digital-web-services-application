@@ -92,6 +92,7 @@ namespace AdminsideWebApp.Controllers
 
 
         //Edit
+        [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             var project = await _context.Projects.FindAsync(id);
@@ -120,6 +121,19 @@ namespace AdminsideWebApp.Controllers
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
+        }
+
+
+        //Details
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var project = await _context.Projects.FindAsync(id);
+
+            if (project == null)
+                return NotFound();
+
+            return View(project);
         }
     }
 }

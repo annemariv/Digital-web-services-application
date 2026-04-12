@@ -1,0 +1,45 @@
+﻿@model ProjectModel
+
+<div class="admin-container center">
+
+    <div class="admin-card details-card">
+
+        <div class="admin-header center-text">
+            <h2 class="admin-title">@Model.Title</h2>
+            <p class="admin-subtitle">Projekti detailid</p>
+        </div>
+
+        <div class="details-content">
+
+            <div class="details-row">
+                <span class="details-label">Staatus</span>
+                <span class="status-badge status-@Model.Status?.ToLower()">
+                    @Model.StatusDisplay
+                </span>
+            </div>
+
+            <div class="details-row">
+                <span class="details-label">Loodud</span>
+                <span>@Model.CreatedAt.ToShortDateString()</span>
+            </div>
+
+            @if (!string.IsNullOrEmpty(Model.Description))
+            {
+                <div class="details-row column">
+                    <span class="details-label">Kirjeldus</span>
+                    <p class="details-description">@Model.Description</p>
+                </div>
+            }
+        </div>
+        <div class="form-actions center">
+
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn-primary">
+                Muuda
+            </a>
+
+            <a asp-action="Index" class="btn-secondary-custom">
+                Tagasi
+            </a>
+        </div>
+    </div>
+</div>

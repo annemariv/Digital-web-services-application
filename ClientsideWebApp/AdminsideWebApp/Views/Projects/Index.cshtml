@@ -50,9 +50,12 @@
                                 <i class="bi bi-pencil"></i>
                             </a>
 
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="icon-btn delete" title="Kustuta">
-                                <i class="bi bi-trash"></i>
-                            </a>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="icon-btn delete" title="Kustuta">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            }
 
                         </td>
                     </tr>

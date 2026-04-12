@@ -10,6 +10,21 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="/images/V_ logo.png">
 </head>
+
+@if (TempData["Success"] != null)
+{
+    <div class="toast-message success">
+        @TempData["Success"]
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="toast-message error">
+        @TempData["Error"]
+    </div>
+}
+
 <body>
     <header>
         <nav class="site-navbar">
@@ -29,6 +44,15 @@
                             + Lisa projekt
                         </a>
                     </li>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a asp-controller="Users" asp-action="Create" class="site-link">
+                                Lisa töötaja
+                            </a>
+                        </li>
+                    }
                 </ul>
             </div>
         </nav>

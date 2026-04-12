@@ -40,6 +40,7 @@ namespace AdminsideWebApp.Controllers
         }
 
         //Create
+        [Authorize(Roles = "Admin,Employee")]
         public IActionResult Create()
         {
             LoadStatuses();
@@ -47,6 +48,7 @@ namespace AdminsideWebApp.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin,Employee")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ProjectModel project)
         {
@@ -79,6 +81,7 @@ namespace AdminsideWebApp.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
@@ -95,6 +98,7 @@ namespace AdminsideWebApp.Controllers
 
 
         //Edit
+        [Authorize(Roles = "Admin,Employee")]
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -108,6 +112,7 @@ namespace AdminsideWebApp.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin,Employee")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, ProjectModel project)
         {
@@ -146,6 +151,7 @@ namespace AdminsideWebApp.Controllers
 
 
         //Details
+        [Authorize(Roles = "Admin,Employee")]
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {

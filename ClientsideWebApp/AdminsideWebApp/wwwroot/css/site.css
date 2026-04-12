@@ -402,3 +402,33 @@ textarea.form-control {
     color: #444;
     line-height: 1.6;
 }
+
+
+/*alert*/
+.toast-message {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    min-width: 260px;
+    max-width: 360px;
+    padding: 18px 22px;
+    border-radius: 18px;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.4;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.18);
+    z-index: 2000;
+    animation: fadeInUp 0.4s ease;
+    transition: all 0.3s ease;
+}
+
+.toast-message.success {
+    background: rgba(198,240,138,0.95);
+    color: #243a1f;
+}
+
+.toast-message.error {
+    background: rgba(255,120,120,0.95);
+    color: #fff;
+}
+

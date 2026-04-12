@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ProjectModel>
+
+<div class="admin-container">
+
+    <div class="admin-header">
+        <h1 class="admin-title">Projektid</h1>
+        <p class="admin-subtitle">Kõik projektid</p>
+    </div>
+
+    <div class="admin-card">
+
+        <div style="margin-bottom:15px;">
+            <a asp-action="Create" class="btn-primary">+ Lisa projekt</a>
+        </div>
+
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Pealkiri</th>
+                    <th>Staatus</th>
+                    <th>Loodud</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.Status</td>
+                        <td>@item.CreatedAt.ToShortDateString()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

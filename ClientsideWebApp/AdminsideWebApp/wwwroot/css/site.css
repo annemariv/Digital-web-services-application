@@ -180,3 +180,25 @@ textarea.form-control {
     font-size: 0.85rem;
     color: #d9534f;
 }
+
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    text-align: left;
+    font-size: 0.85rem;
+    color: #888;
+    padding: 10px;
+}
+
+.admin-table td {
+    padding: 12px 10px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.admin-table tr:hover {
+    background: rgba(198,240,138,0.15);
+}

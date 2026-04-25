@@ -34,19 +34,24 @@
                         </td>
 
                         <td class="text-center">
-                            @if (item.User.UserName != User.Identity.Name)
-                            {
-                                <form asp-action="Delete" method="post" class="inline-form">
-                                    @Html.AntiForgeryToken()
+                            <div class="inline-form">
+                                <a asp-action="Edit" asp-route-id="@item.User.Id" class="icon-btn" title="Muuda">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
 
-                                    <input type="hidden" name="id" value="@item.User.Id" />
+                                @if (item.User.UserName != User.Identity.Name)
+                                {
+                                    <form asp-action="Delete" method="post" class="inline-form">
+                                        @Html.AntiForgeryToken()
 
-                                    <button type="submit" class="icon-btn delete" title="Kustuta">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </form>
-                            }
+                                        <input type="hidden" name="id" value="@item.User.Id" />
 
+                                        <button type="submit" class="icon-btn delete" title="Kustuta">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                }
+                            </div>
                         </td>
                     </tr>
                 }

@@ -16,9 +16,9 @@ namespace ClientsideWebApp.Models
                     ShortDescription = "Kaasaegne ja kiire veebileht sinu ettevõttele",
                     Bullets = new List<string>
                     {
-                        "Responsiivne disain igas seadmes",
+                        "Toimib sujuvalt nii telefonis, tahvlis kui arvutis",
                         "SEO-sõbralik struktuur ja kood",
-                        "Sisuhaldus lihtsustatud adminpaneeliga"
+                        "Lihtne sisuhaldus mugava adminpaneeliga"
                     }
                 },
                 new DigitalServiceModel
@@ -42,9 +42,9 @@ namespace ClientsideWebApp.Models
                     ShortDescription = "Visuaalne identiteet, mis jääb meelde",
                     Bullets = new List<string>
                     {
-                        "Mitmekülgne kasutus erinevates meediumites",
-                        "Professionaalne ja ajatu stiil",
-                        "Vektorformaadis failid trükiks ja veebiks"
+                        "Mitmekülgne kasutus erinevates kanalites",
+                        "Professionaalne ja ajatu visuaalne stiil",
+                        "Kasutusvalmis lahendus nii veebis kui igapäevases turunduses"
                     }
                 },
                 new DigitalServiceModel
@@ -56,7 +56,7 @@ namespace ClientsideWebApp.Models
                     Bullets = new List<string>
                     {
                         "Regulaarne aruandlus ja raportid",
-                        "Maksunõu ja konsultatsioon",
+                        "Maksunõustamine ja konsultatsioon",
                         "Kulude ja tulude jälgimine reaalajas"
                     }
                 },

@@ -48,10 +48,13 @@
 
                 @if (TempData["Success"] != null)
                 {
-                    <div class="alert alert-success">@TempData["Success"]</div>
+                    <div class="alert-success-custom">
+                        <span class="alert-icon">✓</span>
+                        <span>@TempData["Success"]</span>
+                    </div>
                 }
 
-                <form asp-action="Index" method="post">
+                <form asp-controller="Quote" asp-action="Index" method="post">
                     <div class="mb-3">
                         <select asp-for="Quote.Service" class="form-control" required>
                             <option value="" disabled selected>Vali teenus</option>

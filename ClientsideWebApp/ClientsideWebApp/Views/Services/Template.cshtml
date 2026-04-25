@@ -45,7 +45,7 @@
 <!-- detail -->
 <section class="service-detail py-5">
     <div class="container">
-        <div class="row align-items-stretch g-5">
+        <div class="row align-items-center g-5">
 
             <div class="col-md-6 d-flex align-items-center justify-content-center">
                 <div class="service-image w-100">
@@ -53,8 +53,8 @@
                 </div>
             </div>
 
-            <div class="col-md-6 d-flex align-items-stretch">
-                <div class="service-text-content p-4 w-100 d-flex flex-column justify-content-center">
+            <div class="col-md-6 d-flex">
+                <div class="service-text-content p-4 w-100 d-flex flex-column">
                     @await Html.PartialAsync($"~/Views/Services/{Model}.cshtml")
                 </div>
             </div>

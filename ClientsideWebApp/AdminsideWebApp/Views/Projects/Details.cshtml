@@ -1,4 +1,6 @@
 ﻿@model ProjectModel
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> UserManager
 
 <div class="admin-container center">
 
@@ -30,6 +32,21 @@
                     <p class="details-description">@Model.Description</p>
                 </div>
             }
+
+            <div class="details-row">
+                <span class="details-label">Vastutaja</span>
+                <span>
+                    @{
+                        var userName = "Pole määratud";
+                        if (!string.IsNullOrEmpty(Model.UserId))
+                        {
+                            var u = await UserManager.FindByIdAsync(Model.UserId);
+                            userName = u?.UserName ?? "Pole määratud";
+                        }
+                    }
+                    @userName
+                </span>
+            </div>
         </div>
         <div class="form-actions center">
 

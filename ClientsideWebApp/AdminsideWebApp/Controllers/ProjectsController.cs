@@ -1,6 +1,7 @@
 ﻿using AdminsideWebApp.Data;
 using AdminsideWebApp.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,10 +12,11 @@ namespace AdminsideWebApp.Controllers
     public class ProjectsController : Controller
     {
         private readonly AppDbContext _context;
-
-        public ProjectsController(AppDbContext context)
+        private readonly UserManager<IdentityUser> _userManager;
+        public ProjectsController(AppDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public async Task<IActionResult> Index()
@@ -39,11 +41,23 @@ namespace AdminsideWebApp.Controllers
             };
         }
 
+        //Helper to populate users selector
+        private void LoadUsersSelect(string? selectedUserId = null)
+        {
+            var users = _userManager.Users
+                .OrderBy(u => u.UserName)
+                .Select(u => new { u.Id, u.UserName })
+                .ToList();
+
+            ViewBag.Users = new SelectList(users, "Id", "UserName", selectedUserId);
+        }
+
         //Create
         [Authorize(Roles = "Admin,Employee")]
         public IActionResult Create()
         {
             LoadStatuses();
+            LoadUsersSelect();
             return View();
         }
 
@@ -55,10 +69,21 @@ namespace AdminsideWebApp.Controllers
             if (!ModelState.IsValid)
             {
                 LoadStatuses();
+                LoadUsersSelect(project.UserId);
                 return View(project);
             }
 
             project.CreatedAt = DateTime.UtcNow;
+
+            //Project can be unassigned
+            if (!User.IsInRole("Admin"))
+            {
+                project.UserId = _userManager.GetUserId(User);
+            }
+            else
+            {
+                project.UserId = string.IsNullOrWhiteSpace(project.UserId) ? null : project.UserId;
+            }
 
             _context.Projects.Add(project);
             await _context.SaveChangesAsync();
@@ -108,6 +133,8 @@ namespace AdminsideWebApp.Controllers
                 return NotFound();
 
             LoadStatuses();
+            LoadUsersSelect(project.UserId);
+
             return View(project);
         }
 
@@ -122,6 +149,7 @@ namespace AdminsideWebApp.Controllers
             if (!ModelState.IsValid)
             {
                 LoadStatuses();
+                LoadUsersSelect(project.UserId);
                 return View(project);
             }
 
@@ -129,6 +157,22 @@ namespace AdminsideWebApp.Controllers
 
             if (existingProject == null)
                 return NotFound();
+
+            var incomingUserId = string.IsNullOrWhiteSpace(project.UserId) ? null : project.UserId;
+
+            if (!string.Equals(existingProject.UserId ?? "", incomingUserId ?? "", StringComparison.Ordinal))
+            {
+                //Only admin can change the assigned user
+                if (!User.IsInRole("Admin"))
+                {
+                    ModelState.AddModelError(string.Empty, "Ainult admin saab muuta projekti vastutajat.");
+                    LoadStatuses();
+                    LoadUsersSelect(project.UserId);
+                    return View(project);
+                }
+
+                existingProject.UserId = incomingUserId;
+            }
 
             bool hasChanges =
                 (existingProject.Title ?? "").Trim() != (project.Title ?? "").Trim() ||

@@ -1,4 +1,6 @@
 ﻿@model ProjectModel
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> UserManager
 
 <div class="admin-container">
 
@@ -27,9 +29,22 @@
                 <select asp-for="Status" asp-items="ViewBag.Statuses" class="form-control"></select>
             </div>
 
-            <div class="form-actions between">
-                <a asp-action="Index" class="btn-secondary">Tagasi</a>
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="form-group">
+                    <label asp-for="UserId" class="form-label">Vastutaja</label>
+                    <select asp-for="UserId" asp-items="ViewBag.Users" class="form-control">
+                        <option value="">Pole määratud</option>
+                    </select>
+                </div>
+            }
+
+            <div class="form-actions center">
                 <button type="submit" class="btn-primary">Salvesta</button>
+
+                <a asp-action="Index" class="btn-secondary-custom">
+                    Tagasi
+                </a>
             </div>
 
         </form>

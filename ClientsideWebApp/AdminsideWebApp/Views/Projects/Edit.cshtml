@@ -1,4 +1,6 @@
 ﻿@model ProjectModel
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> UserManager
 
 <div class="admin-container">
 
@@ -29,14 +31,33 @@
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
 
-            <div class="form-actions">
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="form-group">
+                    <label asp-for="UserId" class="form-label">Vastutaja</label>
+                    <select asp-for="UserId" asp-items="ViewBag.Users" class="form-control">
+                        <option value="">Pole määratud</option>
+                    </select>
+                    <span asp-validation-for="UserId" class="text-danger"></span>
+                </div>
+            }
+            else
+            {
+                <div class="form-group">
+                    <label class="form-label">Vastutaja</label>
+                    <input class="form-control" value="@( (await UserManager.FindByIdAsync(Model.UserId))?.UserName ?? "Pole määratud" )" readonly />
+                    <input type="hidden" asp-for="UserId" />
+                </div>
+            }
+
+            <div class="form-actions center">
 
                 <button type="submit" class="btn-primary">
                     Salvesta
                 </button>
 
                 <a asp-action="Index" class="btn-secondary-custom">
-                    Tühista
+                    Tagasi
                 </a>
 
             </div>

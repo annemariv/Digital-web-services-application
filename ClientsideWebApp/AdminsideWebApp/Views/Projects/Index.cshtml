@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<ProjectModel>
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> UserManager
 
 <div class="admin-container">
 
@@ -17,6 +19,7 @@
             <thead>
                 <tr>
                     <th>Pealkiri</th>
+                    <th>Vastutaja</th>
                     <th>Staatus</th>
                     <th>Loodud</th>
                     <th>Uuendatud</th>
@@ -26,8 +29,17 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+                    var assignedUserName = "Pole määratud";
+                    if (!string.IsNullOrEmpty(item.UserId))
+                    {
+                        var u = await UserManager.FindByIdAsync(item.UserId);
+                        assignedUserName = u?.UserName ?? "Pole määratud";
+                    }
+
                     <tr>
                         <td>@item.Title</td>
+
+                        <td>@assignedUserName</td>
 
                         <td>
                             <span class="status-badge status-@item.Status.ToLower()">
